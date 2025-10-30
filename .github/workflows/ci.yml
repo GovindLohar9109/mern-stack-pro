@@ -11,23 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 🧾 Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18   # or your project's Node version
+          node-version: 18  # or your project's Node version
 
-      - name: Install dependencies
-        run: npm install
+      - name: 📦 Install dependencies
+        run: npm ci
 
-      - name: Run tests
+      - name: 🧪 Run tests
         run: |
           echo "🧪 Running tests..."
           npm test || echo "⚠️ No tests found — skipping."
 
-      - name: Build check
+      - name: 🏗️ Build project
         run: |
           echo "🏗️ Building project..."
           npm run build || echo "⚠️ Build script missing — skipping."
