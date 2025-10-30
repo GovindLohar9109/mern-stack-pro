@@ -1,4 +1,4 @@
 
 
-export const url="https://mern-stack-pro-14u7.onrender.com";
+export const url="https://intern-demo-server.onrender.com";
 
