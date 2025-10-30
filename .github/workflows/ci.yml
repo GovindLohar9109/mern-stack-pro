@@ -23,11 +23,13 @@ jobs:
         run: npm install
 
       - name: Run tests
+        working-directory: server
         run: |
           echo "Running tests..."
           npm test || echo " No tests found — skipping."
 
       - name: Build project
+        working-directory: server
         run: |
           echo " Building project..."
           npm run build || echo "Build script missing — skipping."
