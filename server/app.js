@@ -11,7 +11,7 @@ app.use(express.json());
 
 connectDB();
 app.get("/",(req,res)=>{
-    res.send("Welcome to GKMIT");
+    res.send("Welcome to GKMIT .....");
 })
 app.use("/",userRoute);
 // UserController.addUser("govind");
