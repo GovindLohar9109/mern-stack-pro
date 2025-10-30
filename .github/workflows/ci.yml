@@ -20,6 +20,7 @@ jobs:
           node-version: 18  # or your project's Node version
 
       - name: Install dependencies
+        working-directory: server
         run: npm install
 
       - name: Run tests
