@@ -1,16 +1,8 @@
-// This file helps register your custom service worker
-
-export function register() {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker
-        .register('/service-worker.js')
-        .then((registration) => {
-          console.log('Service Worker registered: ', registration);
-        })
-        .catch((registrationError) => {
-          console.log('Service Worker registration failed: ', registrationError);
-        });
-    });
-  }
-}
+navigator.serviceWorker
+  .register(`${process.env.PUBLIC_URL}/service-worker.js`)
+  .then((registration) => {
+    console.log('Service Worker registered: ', registration);
+  })
+  .catch((error) => {
+    console.log('Service Worker registration failed: ', error);
+  });
