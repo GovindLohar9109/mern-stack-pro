@@ -1,15 +1,15 @@
-# Stage 1: Build React app
-FROM node:18-alpine AS build
+# Stage 1: Build React frontend
+FROM node:20
 
-WORKDIR /app
+WORKDIR /client
+
+# Copy package files and install dependencies
+
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with Nginx
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+# Expose and start
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]

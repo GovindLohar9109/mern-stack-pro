@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-WORKDIR /app
+WORKDIR /server
 
 COPY package*.json ./
 RUN npm install
@@ -8,7 +8,7 @@ RUN npm install
 COPY . .
 
 # Expose backend port
-EXPOSE 5000
+
 
 # Start the Node server
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
