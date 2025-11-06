@@ -17,13 +17,13 @@ export async function getUsers(setUser){
 
     try{
         var res=await axios.get(url+"/get-users");
-       
-        setUser({users:res.data});
+     
+        setUser(res.data);
         
     }
     catch(err){
-        console.log("Sever Error...",err);
-        setUser({users:[]})
+      
+        setUser([])
     }
 
 }

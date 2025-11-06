@@ -4,9 +4,9 @@ import { getUsers } from "./api/user-api";
 
 export default function GetAllUsers(){
 
-    const [users,setUsers]=useState({users:[]});
+    const [users,setUsers]=useState([]);
     
-
+    console.log(users);
     useEffect(()=>{
         
         getUsers(setUsers);
@@ -16,7 +16,7 @@ export default function GetAllUsers(){
 
         <h1>All Users</h1>
 
-        {users.users.map((user,idx)=>{
+        {users.map((user,idx)=>{
            
             return (
                 <>

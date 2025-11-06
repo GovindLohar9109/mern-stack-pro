@@ -7,12 +7,12 @@ export default class UserController {
         var query="SELECT * FROM users";
         try {
             const resp = await pool.query(query);
-            
            
-            res.send( resp.rows );
+           
+            res.send(resp.rows );
         }
         catch (err) {
-            res.send({ status: false, users: [] });
+            res.send([]);
         }
         return;
 
@@ -27,7 +27,7 @@ export default class UserController {
             console.log(user);
              var query="INSERT INTO users VALUES($1)";
              const resp=await pool.query(query,[user]);
-             console.log(resp);
+             
             
             res.send({
                 status: true,
