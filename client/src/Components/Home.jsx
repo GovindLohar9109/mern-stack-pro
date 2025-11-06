@@ -12,7 +12,7 @@ export default function Home() {
         <ul>
             <li><a href="/add-user">ADD USER</a></li>
             <li><a href="/get-users">GET USERS </a></li>
-            <li><a href="delete-user">DELETE USER</a></li>
+            
         </ul>
 
     </>
