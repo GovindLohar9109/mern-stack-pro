@@ -1,7 +1,7 @@
 import pool from "../utils/connectDB.js";
 
 export default class UserController {
-
+    
     static async getUsers(req, res) {
 
         var query="SELECT * FROM users";
