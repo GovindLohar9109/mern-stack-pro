@@ -1,19 +1,21 @@
-// db.js
-import mongoose from "mongoose";
+import { Pool } from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
-const MONGO_URL = process.env.MONGO_URL;
 
-export default async function connectDB() {
+let pool;
+
+export async function connectDB() {
   try {
-    await mongoose.connect(MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    pool = new Pool({
+      connectionString: process.env.POSTGRES_URL,
     });
-    console.log("✅ Database Connection Successfully...");
+    await pool.connect();
+    console.log("Connection DB Success...");
   } catch (err) {
-    console.error("❌ Database Connection Failed...", err);
-    process.exit(1); // Stop server if DB connection fails
+    console.error("Connection DB Failed....", err);
   }
 }
+
+connectDB();
+export default pool;

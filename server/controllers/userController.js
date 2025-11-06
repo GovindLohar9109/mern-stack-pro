@@ -1,16 +1,17 @@
-
-import userModel from "../utils/models/userModel.js";
+import pool from "../utils/connectDB.js";
 
 export default class UserController {
 
     static async getUsers(req, res) {
+
+        var query="SELECT * FROM users";
         try {
-            const resp = await userModel.find();
-            console.log(resp);
-            res.send({ status: true, users: resp });
+            const resp = await pool.query(query);
+           
+            res.send({ status: true, users: resp.rows });
         }
         catch (err) {
-            res.send({ status: false, msg: err });
+            res.send({ status: false, users: [] });
         }
         return;
 
@@ -21,13 +22,14 @@ export default class UserController {
             const user = req.body; // e.g. { user_name: "Govind" }
 
             // ✅ Must await .save()
-             const savedUser = await new userModel(user).save();
+             var query="INSERT INTO users VALUES($1)";
+             await pool.query(query,[user]);
            
             
             res.send({
                 status: true,
                 msg: "User added successfully!",
-                user: savedUser,
+               
             });
         } catch (err) {
             console.error("Error adding user:", err);
@@ -35,26 +37,5 @@ export default class UserController {
         }
     }
 
-    static async removeUser(req, res) {
-        var user_id = req.params.user_id;
-        try {
-            await userModel.delete({ id: user_id });
-            res.send({ status: true, msg: "user removed..." });
-        }
-        catch (err) {
-            res.send({ status: false, msg: "err" + err });
-        }
-
-
-
-    }
-    static updateUser(req, res) {
-
-        res.send("Successfully Updated User");
-    }
-
-
-
-
-
+    
 }
