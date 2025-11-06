@@ -7,8 +7,9 @@ export default class UserController {
         var query="SELECT * FROM users";
         try {
             const resp = await pool.query(query);
+            
            
-            res.send({ status: true, users: resp.rows });
+            res.send( resp.rows );
         }
         catch (err) {
             res.send({ status: false, users: [] });
@@ -19,12 +20,14 @@ export default class UserController {
 
     static async addUser(req, res) {
         try {
-            const user = req.body; // e.g. { user_name: "Govind" }
+            
+            const user = req.body.user_name // e.g. { user_name: "Govind" }
 
             // ✅ Must await .save()
+            console.log(user);
              var query="INSERT INTO users VALUES($1)";
-             await pool.query(query,[user]);
-           
+             const resp=await pool.query(query,[user]);
+             console.log(resp);
             
             res.send({
                 status: true,

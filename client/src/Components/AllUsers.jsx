@@ -20,7 +20,7 @@ export default function GetAllUsers(){
            
             return (
                 <>
-                    <h3>{user.user_name}</h3>
+                    <h3 key={idx}>{user.name}</h3>
                 </>
             )
         })}
