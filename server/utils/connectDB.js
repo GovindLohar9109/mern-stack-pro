@@ -8,7 +8,10 @@ let pool;
 export async function connectDB() {
   try {
     pool = new Pool({
-      connectionString:process.env.POSTGRES_URL
+      connectionString:process.env.POSTGRES_URL,
+      ssl: {
+        rejectUnauthorized: false, // Required for most cloud PostgreSQL providers
+      },
     });
     await pool.connect();
     console.log("Connection DB Success...");
