@@ -8,7 +8,7 @@ let pool;
 export async function connectDB() {
   try {
     pool = new Pool({
-      connectionString: process.env.POSTGRES_URL,
+      connectionString: "postgresql://postgres:@localhost:5432/postgres",
     });
     await pool.connect();
     console.log("Connection DB Success...");
